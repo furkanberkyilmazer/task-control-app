@@ -20,7 +20,7 @@ function TaskCreate({onCreate,task,taskFormUpdate,onUpdate}) {
         event.preventDefault(); //bu koyulmazsa form submit olduğunda sayfa yeniden yüklenir.
         if(taskFormUpdate)
         {
-            onUpdate(task.id,task.title,task.taskDesc);
+            onUpdate(task.id,title,taskDesc);
         }
         else{
             onCreate(title,taskDesc);

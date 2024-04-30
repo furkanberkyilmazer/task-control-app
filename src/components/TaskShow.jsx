@@ -11,8 +11,9 @@ function TaskShow({task , onDelete,onUpdate}) {
         setShowUpdate(!showUpdate);
     }
     const handleSubmit=(id,updatedTitle,updatedTaskDesc)=>{
-        setShowUpdate(false);
         onUpdate(id,updatedTitle,updatedTaskDesc);
+        setShowUpdate(false);
+
     }
     console.log("Task: " + task.id);
     return ( 
