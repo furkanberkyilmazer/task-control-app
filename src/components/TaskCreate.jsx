@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState , useContext} from "react";
+import TasksContext from "../context/task";
 
-function TaskCreate({onCreate,task,taskFormUpdate,onUpdate}) {
+function TaskCreate({task,taskFormUpdate,onUpdate}) {
 
     const [title, setTitle] = useState(task ? task.title : "")
     const [taskDesc, setTaskDesc] = useState(task ? task.taskDesc : "")
 
-    
+    const {createTask} =useContext(TasksContext);
+
     const handleChange=(event)=>{
 
         setTitle(event.target.value);
@@ -20,11 +22,12 @@ function TaskCreate({onCreate,task,taskFormUpdate,onUpdate}) {
         event.preventDefault(); //bu koyulmazsa form submit olduğunda sayfa yeniden yüklenir.
         if(taskFormUpdate)
         {
-            onUpdate(task.id,task.title,task.taskDesc);
+            onUpdate(task.id,title,taskDesc);
+            //editTaskById(task.id,title,taskDesc);
         }
         else{
-            onCreate(title,taskDesc);
-
+            //onCreate(title,taskDesc);
+            createTask(title,taskDesc);
         }
 
         setTitle("");

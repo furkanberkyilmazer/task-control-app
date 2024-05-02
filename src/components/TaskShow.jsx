@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useState , useContext } from "react";
 import TaskCreate from "./TaskCreate";
+import TasksContext from "../context/task";
 
-function TaskShow({task , onDelete,onUpdate}) {
+function TaskShow({task}) {
+
+
+    const {editTaskById,deleteTaskById} =useContext(TasksContext);
+
     const [showUpdate, setShowUpdate] = useState(false)
 
     const handleDelete=()=>{
-        onDelete(task.id);
+       // onDelete(task.id);
+       deleteTaskById(task.id)
     }
     const handleUpdate=()=>{
         setShowUpdate(!showUpdate);
     }
     const handleSubmit=(id,updatedTitle,updatedTaskDesc)=>{
+        //onUpdate(id,updatedTitle,updatedTaskDesc);
+        editTaskById(id,updatedTitle,updatedTaskDesc);
         setShowUpdate(false);
-        onUpdate(id,updatedTitle,updatedTaskDesc);
+
     }
     console.log("Task: " + task.id);
     return ( 
         <div className="task-show">
-            {showUpdate ? <TaskCreate task={task} taskFormUpdate={true} onUpdate={handleSubmit}/>:<div>
+            {showUpdate ? <TaskCreate task={task} taskFormUpdate={true} onUpdate={handleSubmit} />:<div>
                 <h3 className="task-title">Your Task</h3>
             <p>{task.title}</p>
             <h3 className="task-title">Things To Do</h3>
