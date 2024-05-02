@@ -11,13 +11,11 @@ function App() {
 
 
   useEffect(()=>{
-      
+      ""
    fetchTask();
   },[])  //köşeli boş parantez sadece ilk çalıştığında çalışmasını sağlar.
   // parantez olmazsa ilk çalıştığında ve usestateler her değiştiğinde çalışır.
   // pazartez içerisinde bir usestate adı olursa ilk çalıştığında ve o usestate değiştiğinde çalışır.
-
-
  
 
   return (
@@ -25,8 +23,9 @@ function App() {
       <TaskCreate/>
       <h1>Tasks</h1>
       <TaskList/>
+      
     </div>
-    
+
   );
 }
 
