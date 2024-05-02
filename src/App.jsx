@@ -17,7 +17,6 @@ function App() {
   // parantez olmazsa ilk çalıştığında ve usestateler her değiştiğinde çalışır.
   // pazartez içerisinde bir usestate adı olursa ilk çalıştığında ve o usestate değiştiğinde çalışır.
  
-
   return (
     <div className="App">
       <TaskCreate/>
